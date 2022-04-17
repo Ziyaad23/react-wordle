@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { wordList } from './Constants/data';
+import Keyboard from './Components/Keyboard';
 
 function App() {
   const [boardData, setBoardData] = useState(JSON.parse(localStorage.getItem("board-data")));
   const [charArray, setCharArray] = useState([]);
+
+  const handleKeyPress = (key) => {
+    console.log(key);
+  }
 
   useEffect(() => {
     //Generate new word
@@ -33,6 +38,8 @@ function App() {
       <nav className="h-16 w-full m-0 border-gray-200 border-b grid place-items-center">
         <h1 className="m-0 text-white text-4xl font-sans">React Wordle</h1>
       </nav>
+      <Keyboard boardData={boardData}
+        handleKeyPress={handleKeyPress} />
     </div>
   );
 }
